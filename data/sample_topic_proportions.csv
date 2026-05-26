@@ -1,0 +1,22 @@
+```csv
+country,date,anchor,avg_proportion
+Canada,2019-01-01,bank,0.22
+Canada,2019-01-01,govern,0.18
+Canada,2019-01-01,growth,0.20
+Canada,2019-01-01,market,0.25
+Canada,2019-01-01,other,0.15
+Canada,2019-02-01,bank,0.24
+Canada,2019-02-01,govern,0.16
+Canada,2019-02-01,growth,0.21
+Canada,2019-02-01,market,0.23
+Canada,2019-02-01,other,0.16
+United States,2019-01-01,bank,0.19
+United States,2019-01-01,govern,0.20
+United States,2019-01-01,growth,0.22
+United States,2019-01-01,market,0.24
+United States,2019-01-01,other,0.15
+United States,2019-02-01,bank,0.21
+United States,2019-02-01,govern,0.18
+United States,2019-02-01,growth,0.23
+United States,2019-02-01,market,0.22
+United States,2019-02-01,other,0.16
