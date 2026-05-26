@@ -1,8 +1,8 @@
 # Modeling Proportions and Compositions with Beta and Dirichlet Regression
 
-This repository contains the R code for my final-year statistics project on **Beta regression** and **Dirichlet regression**. The project studies how proportional and compositional responses should be modeled when the outcome is bounded and when multiple components are constrained to sum to one.
+This repository contains the R code for a final-year statistics project on **Beta regression** and **Dirichlet regression**. The project studies how proportional and compositional responses should be modeled when the outcome is bounded and when several components are constrained to sum to one.
 
-The empirical application uses a monthly country-level topic-proportion dataset constructed from central bank speeches. The response is a five-part topic composition:
+The empirical application uses monthly country-level topic proportions constructed from central bank speeches. The response is a five-part topic composition:
 
 - `bank`
 - `govern`
@@ -20,16 +20,14 @@ The main explanatory variables are macroeconomic covariates observed at the same
 
 ## Research Question
 
-The project asks:
+The main question is:
 
-> How should we model topic shares when the response is either a single proportion or a full composition?
+> How should topic shares be modeled when the response is either a single proportion or a full composition?
 
-A standard linear regression model is not ideal because the response is bounded and often heteroskedastic. In addition, when the response is a full composition, the components are dependent because they must sum to one.
-
-This motivates two likelihood-based approaches:
+A standard Gaussian linear model is not ideal for this setting because the response is bounded and often heteroskedastic. When the response is a full composition, the components are also dependent because they must sum to one. This motivates two likelihood-based approaches:
 
 - **Beta regression** for a single continuous proportion in `(0, 1)`;
-- **Dirichlet regression** for a multicomponent compositional response on the simplex.
+- **Dirichlet regression** for a multicomponent response on the simplex.
 
 ## Methodology
 
@@ -56,30 +54,35 @@ The project includes the following steps:
 
 5. **Nonlinear smoothing and model selection**
    - Use spline-based and penalized-smoothing extensions to relax purely linear effects.
-   - Compare models using AIC and BIC.
+   - Compare candidate specifications using AIC and BIC.
    - Retain smooth macroeconomic effects when they improve model fit.
 
 6. **G7 multi-country versus single-country comparison**
-   - Compare a shared multi-country model against separate country-specific models.
+   - Compare a shared G7 model against separate country-specific models.
    - Evaluate fit using MAE and RMSE across the five composition components.
 
 ## Key Results
 
 The simplified Beta regression example is useful for modeling one topic share, but it ignores the dependence among the remaining shares. Dirichlet regression is more appropriate when the goal is to model the full topic allocation jointly.
 
-The baseline Dirichlet model suggests that macroeconomic covariates affect different topic components in different ways. For example, policy rate is associated with a lower expected `bank` share relative to `other`, while it is associated with a higher expected `growth` share relative to `other`.
+The baseline Dirichlet model suggests that macroeconomic covariates affect topic components differently. For example, policy rate is associated with changes in expected topic shares relative to the reference component.
 
 Adding a COVID-period indicator improves model fit and captures a structural shift in topic allocation during the pandemic period.
 
 The final nonlinear Dirichlet models show that purely linear specifications are too restrictive for this dataset. Penalized smoothing provides a more flexible way to model nonlinear macroeconomic effects while controlling excessive wiggliness.
 
-For the G7 comparison, separate single-country models achieve lower MAE and RMSE than the shared multi-country model for every G7 country. This suggests that country-specific modeling provides a better description of national topic-composition dynamics.
+For the G7 comparison, separate country-specific models achieve lower MAE and RMSE than the shared multi-country model for every G7 country. This suggests that country-specific modeling provides a better description of national topic-composition dynamics.
 
 ## Repository Structure
 
 ```text
 .
 ├── README.md
+├── .gitignore
 ├── G7 model.Rmd
 ├── New table.Rmd
-└── g7_multi_single_compare.Rmd
+├── g7_multi_single_compare.Rmd
+└── data/
+    ├── README.md
+    ├── sample_topic_proportions.csv
+    └── sample_macro_controls.csv
