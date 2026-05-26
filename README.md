@@ -86,3 +86,9 @@ For the G7 comparison, separate country-specific models achieve lower MAE and RM
     ├── README.md
     ├── sample_topic_proportions.csv
     └── sample_macro_controls.csv
+
+## Presentation
+
+A short presentation deck is included to summarize the project motivation, model choices, empirical results, and G7 comparison.
+
+[Project Presentation](presentation/beta_dirichlet_project_presentation.pdf)
