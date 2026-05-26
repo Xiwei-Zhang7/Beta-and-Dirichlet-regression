@@ -45,7 +45,7 @@ code_to_country <- c(
 
 ```{r build 5-anchor composition  }
 topic <- read_csv(
-  "/Users/zhangxiwei/Downloads/g20bis_monthly_topic_proportions.csv",
+  "data/g20bis_monthly_topic_proportions.csv",
   show_col_types = FALSE
 ) %>%
   mutate(
@@ -74,7 +74,7 @@ print(head(topic))
 
 ```{r real GDP convert to monthly}
 real_m <- read_excel(
-  "/Users/zhangxiwei/Downloads/macro_control_vars.xlsx",
+  "data/macro_control_vars.xlsx",
   sheet = "realGDP"
 ) %>%
   rename(date = 1) %>%
@@ -104,7 +104,7 @@ real_m <- read_excel(
 ```{r Read the other 3 macro variables as monthly data}
 read_monthly_sheet <- function(sheet_name) {
   read_excel(
-    "/Users/zhangxiwei/Downloads/macro_control_vars.xlsx",
+    "data/macro_control_vars.xlsx",
     sheet = sheet_name
   ) %>%
     rename(date = 1) %>%
