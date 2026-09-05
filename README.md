@@ -317,25 +317,15 @@ The pooled and country-specific models are evaluated using:
 
 ### Mean Absolute Error
 
-\[
-MAE
-=
-\frac{1}{n}
-\sum_{i=1}^{n}
-|y_i-\hat{y}_i|
-\]
+$$
+\mathrm{MAE} = \frac{1}{n}\sum_{i=1}^{n} \left|y_i-\hat{y}_i\right|
+$$
 
 ### Root Mean Squared Error
 
-\[
-RMSE
-=
-\sqrt{
-\frac{1}{n}
-\sum_{i=1}^{n}
-(y_i-\hat{y}_i)^2
-}
-\]
+$$
+\mathrm{RMSE} = \sqrt{\frac{1}{n}\sum_{i=1}^{n}\left(y_i-\hat{y}_i\right)^2}
+$$
 
 Performance is evaluated both:
 
